@@ -1,6 +1,6 @@
  var app = angular.module('Lawyer995Admin', [] );
 
- app.controller('OrgController', function($scope) {
+ app.controller('OrgController', ['$scope',function($scope) {
    $scope.ngos = [
       { 'id': 0,
         'name': '司改會',
@@ -13,9 +13,9 @@
         'primary_user':2}
    ];
 
- });
+ }]);
 
-app.controller('UserController', function($scope){
+app.controller('UserController', ['$scope',function($scope){
   $scope.users = [
     { 'mail': 'aaa@aaa.com',
       'name': 'Aaa',
@@ -33,4 +33,4 @@ app.controller('UserController', function($scope){
       'org': 0}
   ];
   $scope.orderProperty = 'name';
-});
+}]);
