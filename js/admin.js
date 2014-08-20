@@ -1,6 +1,28 @@
- var app = angular.module('Lawyer995Admin', [] );
+ var app = angular.module('lawyer995Admin', ['ngRoute'] );
 
- app.controller('OrgController', ['$scope',function($scope) {
+ app.config(['$routeProvider',
+    function($routeProvider) {
+      $routeProvider.
+      when('/users', {
+        templateUrl: 'partials/users.html',
+        controller: 'UserCtrl'
+      }).
+      when('/attornies', {
+        templateUrl: 'partials/attornies.html',
+        controller: 'AttorneyCtrl'
+      }).
+      when('/cases', {
+        templateUrl: 'partials/cases.html',
+        controller: 'CaseCtrl'
+      }).
+      otherwise({
+        redirectTo: 'users'
+      });
+    }
+ ]);
+
+
+ app.controller('UserCtrl', ['$scope',function($scope) {
    $scope.ngos = [
       { 'id': 0,
         'name': '司改會',
@@ -13,24 +35,30 @@
         'primary_user':2}
    ];
 
+   $scope.users = [
+     { 'mail': 'aaa@aaa.com',
+       'name': 'Aaa',
+       'cell': '0911-111-111',
+       'landline': '02-2111-1111',
+       'org': 2},
+     { 'mail': 'bbb@bbb.org',
+       'name': 'Bbb',
+       'cell': '0922-222-222',
+       'landline': '03-3333-3333',
+       'org': 1},
+     { 'mail': 'ccc@ccc.com',
+       'name': 'Ccc',
+       'cell': '0933-333-333',
+       'org': 0}
+   ];
+   $scope.orderProperty = 'name';
+
  }]);
 
-app.controller('UserController', ['$scope',function($scope){
-  $scope.users = [
-    { 'mail': 'aaa@aaa.com',
-      'name': 'Aaa',
-      'cell': '0911-111-111',
-      'landline': '02-2111-1111',
-      'org': 2},
-    { 'mail': 'bbb@bbb.org',
-      'name': 'Bbb',
-      'cell': '0922-222-222',
-      'landline': '03-3333-3333',
-      'org': 1},
-    { 'mail': 'ccc@ccc.com',
-      'name': 'Ccc',
-      'cell': '0933-333-333',
-      'org': 0}
-  ];
-  $scope.orderProperty = 'name';
+app.controller('AttorneyCtrl', ['$scope',function($scope){
+
+}]);
+
+app.controller('CaseCtrl', ['$scope', function($scope){
+
 }]);

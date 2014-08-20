@@ -1,72 +1,17 @@
 <!doctype html>
-<html lang="en" ng-app="Lawyer995Admin">
+<html lang="en" ng-app="lawyer995Admin">
 <head>
   <meta charset="utf-8">
   <title>Lawyer 995 Admin</title>
   <link rel="stylesheet" href="includes/bootstrap/css/bootstrap.min.css">
 
-  <script src="includes/angular/angular.js"></script>
+  <script src="includes/angular/angular.min.js"></script>
+  <script src="includes/angular-route/angular-route.min.js"></script>
   <script src="js/admin.js"></script>
+  <!--<script src="js/controllers.js"></script>-->
 
 </head>
 <body>
-	<div ng-controller="OrgController">
-     <div class="container-fluid">
-       <div class="row">
-        <div class="col-md-3">
-          <!--Sidebar content-->
-
-          搜尋: <input ng-model="query">
-
-
-          <!--Body content-->
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>組織</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="org in ngos | filter:query">
-                <td>
-                {{org.name}}
-              </td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
-        <div class="col-md-4" ng-controller="UserController">
-          <select ng-model="orderProperty">
-            <option value="name">姓名</option>
-            <option value="org">組織</option>
-          </select>
-          <table class="table table-striped table-bordered table-hover">
-            <thead>
-              <tr>
-                <th>姓名</th>
-                <th>電話</th>
-                <th>單位</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="user in users | orderBy:orderProperty">
-                <td>
-                  {{user.name}}
-                </td>
-                <td>
-                  {{user.cell}}
-                </td>
-                <td>
-                  {{user.org}}
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-	</div>
-
+  <div ng-view></div>
 </body>
 </html>

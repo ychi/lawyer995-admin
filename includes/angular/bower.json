@@ -3,5 +3,6 @@
   "version": "1.2.16",
   "main": "./angular.js",
   "dependencies": {
+    "angular-route": "~1.2.x"
   }
 }
