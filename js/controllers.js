@@ -38,5 +38,47 @@ adminControllers.controller('AttorneyCtrl', ['$scope',function($scope){
 }]);
 
 adminControllers.controller('CaseCtrl', ['$scope', function($scope){
+  $scope.cases = [
+  {'time': '2014-09-28',
+   'name': 'xxx',
+   'phone': '0955-555-555',
+   'location': 'Taichung',
+   'address': 'xxxXXxx',
+   'description': 'xxxxx xxXxx Xxxxx',
+   'status': 'pending',
+   'note': "noteX",
+   'attorney': 5},
+
+  {'time': '2014-09-27',
+   'name': 'yyy',
+   'phone': '0966-666-666',
+   'location': 'Tainan',
+   'address': 'yyyyYYyyy',
+   'description': 'yyyyy yyyyY YYYyy',
+   'status': 'closed',
+   'note': "noteY",
+   'attorney': 3},
+
+  {'time': '2014-09-29',
+   'name': 'zzzz',
+   'phone': '0977-777-777',
+   'location': 'Taipei',
+   'address': 'zzzzzZZzzz',
+   'description': 'zzzzzZZ zzzzZZz',
+   'status': 'inProgress',
+   'note': "noteZ",
+   'attorney': 1},
+
+  {'time': '2014-09-29',
+   'name': 'www',
+   'phone': '0988-888-888',
+   'location': 'Keelung',
+   'address': 'ww WWwwwwW',
+   'description': 'wwwwww wwwW',
+   'status': 'inProgress',
+   'note': "noteW",
+   'attorney': null}];
+
+
 
 }]);

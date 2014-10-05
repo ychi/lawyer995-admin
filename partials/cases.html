@@ -1,1 +1,61 @@
-cases.
+<div class="container-fluid">
+  <div class="row">
+     <!--Sidebar content-->
+
+     
+
+
+     <!--Body content-->
+     <table class="table table-striped table-bordered table-hover">
+       <thead>
+         <tr>
+           <th>組織</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="org in ngos | filter:query">
+           <td>
+           {{org.name}}
+         </td>
+         </tr>
+       </tbody>
+     </table>
+ </div>
+ <div class="row">
+   陪偵清單|搜尋: <input ng-model="query">
+     <table class="table table-striped table-bordered table-hover">
+       <thead>
+         <tr>
+           <th>時間</th>
+           <th>姓名</th>
+           <th>電話</th>
+           <th>縣市</th>
+           <th>案件狀態</th>
+           <th>接案律師</th>
+         </tr>
+       </thead>
+       <tbody>
+         <tr ng-repeat="case in cases | filter:query | orderBy:orderProperty ">
+           <td>
+             {{case.time}}
+           </td>
+           <td>
+             {{case.name}}
+           </td>
+           <td>
+             {{case.phone}}
+           </td>
+           <td>
+             {{case.location}}
+           </td>
+           <td>
+             {{case.status}}
+           </td>
+           <td>
+             {{case.attorney}}
+           </td>
+         </tr>
+       </tbody>
+     </table>
+ </div>
+</div>
