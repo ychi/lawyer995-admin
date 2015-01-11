@@ -3,7 +3,10 @@
    <div class="col-md-5">
      新註冊律師
 
-     搜尋: <input ng-model="query">
+    <div class="form-group">
+      <label>搜尋</label>
+      <input ng-model="query" class="form-control">
+    </div>
 
 
      <table class="table table-striped table-bordered table-hover">
@@ -17,13 +20,13 @@
        <tbody>
          <tr ng-repeat="attorney in newAttornies | filter:query">
            <td>
-           {{attorney.name}}
+             {{attorney.name}}
            </td>
            <td>
-             {{attorney.cell}}
+             {{attorney.cellphone}}
            </td>
            <td>
-             {{attorney.location}}
+             {{attorney.locations.toString()}}
            </td>
          </tr>
        </tbody>
@@ -32,13 +35,15 @@
    </div>
    <div class="col-md-5">
      現有律師
-     排序
-     <select ng-model="orderProperty">
-       <option value="name">姓名</option>
-       <option value="location">縣市</option>
-       <option value="numCases">案件量</option>
-       <option value="available">on call</option>
-     </select>
+     <div class="form-group">
+       <label>排序</label>
+       <select ng-model="orderProperty" class="form-control">
+         <option value="name">姓名</option>
+         <option value="location">縣市</option>
+         <option value="numCases">案件量</option>
+         <option value="available">on call</option>
+       </select>
+     </div>
 
      <table class="table table-striped table-bordered table-hover">
        <thead>
@@ -56,16 +61,16 @@
              {{attorney.name}}
            </td>
            <td>
-             {{attorney.cell}}
+             {{attorney.cellphone}}
            </td>
            <td>
-             {{attorney.location}}
+             {{attorney.locations.toString()}}
            </td>
            <td>
              {{attorney.numCases}}
            </td>
            <td>
-             {{(attorney.available)?'是':'否'}}
+             {{(attorney.status == 2)?'是':'否'}}
            </td>
          </tr>
        </tbody>

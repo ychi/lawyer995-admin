@@ -1,5 +1,6 @@
  var app = angular.module('lawyer995Admin', ['ngRoute', 'adminControllers'] );
 
+
  app.config(['$routeProvider',
     function($routeProvider) {
       $routeProvider.

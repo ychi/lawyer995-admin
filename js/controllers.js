@@ -1,4 +1,4 @@
-var adminControllers = angular.module('adminControllers', []);
+var adminControllers = angular.module('adminControllers', ['adminAPI']);
 
  adminControllers.controller('UserCtrl', ['$scope',function($scope) {
    $scope.ngos = [
@@ -33,70 +33,16 @@ var adminControllers = angular.module('adminControllers', []);
 
  }]);
 
-adminControllers.controller('AttorneyCtrl', ['$scope',function($scope){
-  $scope.newAttornies = [
-  {'name': 'attorney1',
-   'license': 111111,
-   'associations': ['新北市', '桃園縣'],
-   'location': '台北市',
-   'cell': 0970111111,
-   'phoneDay': 0970111111,
-   'phoneNight': 0970111112,
-   'email': 'attterney1@law.com'
-  },
-  {'name': 'attorney2',
-   'license': 222222,
-   'associations':['台中縣', '新竹縣', '宜蘭縣'],
-   'location': '新竹縣',
-   'cell': 0970111222,
-   'phoneDay': 0970111222,
-   'phoneNight': 0970111222,
-   'email': 'attorney2@law.com'
-  },
-  {'name': 'attorney3',
-  'license': 33333,
-  'associations': ['高雄市', '臺南市'],
-  'location': '高雄市',
-  'cell': 0970111333,
-  'phoneDay': 0970123333,
-  'phoneNight': 0970123333,
-  'email': 'attorney3@law.com'
-  }
-  ];
+adminControllers.controller('AttorneyCtrl', ['$scope', 'AttorneyInfos', function($scope, AttorneyInfos){
+  var loadNewAttorneies = AttorneyInfos.get({status: 0}, function() {
+    $scope.newAttornies = loadNewAttorneies.data;
+  });
 
-  $scope.attornies = [{'name': 'attorney4',
-   'license': 111114,
-   'associations': ['新北市', '桃園縣'],
-   'location': '台北市',
-   'cell': 0970111111,
-   'phoneDay': 0970111111,
-   'phoneNight': 0970111112,
-   'email': 'attterney4@law.com',
-   'numCases': 3,
-   'available': true
-  },
-  {'name': 'attorney5',
-   'license': 222225,
-   'associations':['台中縣', '新竹縣', '宜蘭縣'],
-   'location': '新竹縣',
-   'cell': 0970111222,
-   'phoneDay': 0970111222,
-   'phoneNight': 0970111222,
-   'email': 'attorney5@law.com',
-   'numCases': 5,
-   'available': true
-  },
-  {'name': 'attorney6',
-  'license': 33336,
-  'associations': ['高雄市', '臺南市'],
-  'location': '高雄市',
-  'cell': 0970111333,
-  'phoneDay': 0970123333,
-  'phoneNight': 0970123333,
-  'email': 'attorney6@law.com',
-  'numCases': 6,
-  'available': true
-  }];
+  var loadOnlineAttornies = AttorneyInfos.get({}, function() {
+    $scope.attornies = loadOnlineAttornies.data;
+  });
+
+
   $scope.orderProperty = 'name';
 
 }]);
